@@ -1,0 +1,29 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block body %}
+    <div id="app">
+        <div id="sidebar" data-controller="sidebar">
+            {% include "_partials/_sidebar.html.twig" %}
+        </div>
+        <div id="main" class="layout-navbar">
+            <header class="mb-3">
+                {% include "_partials/_vertical-nav.html.twig" %}
+            </header>
+            <div id="main-content">
+                {% block content %}
+                {% endblock %}
+                <footer>
+                    <div class="footer clearfix mb-0 text-muted">
+                        <div class="float-start">
+                            <p>{{ "now"|date("Y") }} &copy; Mazer</p>
+                        </div>
+                        <div class="float-end">
+                            <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
+                                    href="https://zuramai.github.io/mazer/demo/index.html">Zuramai</a></p>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </div>
+{% endblock %}

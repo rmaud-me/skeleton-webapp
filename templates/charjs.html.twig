@@ -1,0 +1,20 @@
+{% extends 'layouts/main.html.twig' %}
+{% block title %}Chartjs{% endblock %}
+{% block content %}
+    <div class="page-heading">
+        <h3>Chart Js</h3>
+    </div>
+    <div class="page-content">
+        <section class="section">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Line</h4>
+                </div>
+                <div class="card-body">
+                    {{ render_chart(chart) }}
+                </div>
+            </div>
+
+        </section>
+    </div>
+{% endblock %}

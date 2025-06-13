@@ -1,0 +1,11 @@
+#auth {
+    #auth-left {
+        .auth-logo {
+            margin-bottom: 4rem;
+
+            img {
+                height: 5rem;
+            }
+        }
+    }
+}

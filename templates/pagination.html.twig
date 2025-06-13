@@ -1,0 +1,43 @@
+{% extends 'layouts/main.html.twig' %}
+{% block title %}Pagination{% endblock %}
+{% block content %}
+    <div class="page-heading">
+        <h3>Pagination</h3>
+    </div>
+    <div class="page-content">
+        <section class="section">
+            <div class="card">
+                <div class="card-body">
+                    <div class="count">
+                        Item count {{ pagination.getTotalItemCount }}
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table mb-0 table-lg">
+                            <tr>
+                                {# sorting of properties based on query components #}
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    Value
+                                </th>
+                            </tr>
+                            {# table body #}
+                            {% for bid in pagination %}
+                                <tr>
+                                    <td>{{ bid.name }}</td>
+                                    <td>{{ bid.value }}</td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                    {# display navigation #}
+                    <div class="navigation mt-4">
+                        {{ knp_pagination_render(pagination) }}
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+{% endblock %}

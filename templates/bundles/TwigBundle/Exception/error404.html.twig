@@ -1,0 +1,8 @@
+{% extends 'layouts/error.html.twig' %}
+{% block title %}404 - Not Found{% endblock %}
+
+{% block content %}
+    <img class="img-error" src="{{ asset('images/errors/error-404.svg') }}" alt="Not Found">
+    <h1 class="error-title">Not Found</h1>
+    <p class="fs-5 text-gray-600">The page you are looking not found.</p>
+{% endblock %}
