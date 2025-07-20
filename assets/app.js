@@ -4,6 +4,7 @@
  * This file will be included onto the page via the importmap() Twig function,
  * which should already be in your base.html.twig.
  */
+// All mazer are not import, so if a css is not apply and not present add it here
 import './mazer/css/app.css';
 import './mazer/css/app-dark.css';
 import './styles/custom-app.css';
