@@ -1,4 +1,4 @@
-FROM php:8.4-fpm AS skeleton_php_base
+FROM php:8.5-fpm AS skeleton_php_base
 
 WORKDIR /srv
 
