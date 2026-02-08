@@ -1,3 +1,4 @@
+import './stimulus_bootstrap.js';
 /*
  * Welcome to your app's main JavaScript file!
  *
@@ -8,8 +9,6 @@
 import './mazer/css/app.css';
 import './mazer/css/app-dark.css';
 import './styles/custom-app.css';
-
-import './bootstrap.js'
 
 import './mazer/js/initTheme.js';
 import './vendor/perfect-scrollbar/perfect-scrollbar.index.js';

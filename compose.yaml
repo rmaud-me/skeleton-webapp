@@ -8,7 +8,7 @@ services:
     build:
       context: .
       target: skeleton_php_dev
-    container_name: skeleton-php
+    container_name: skeleton-webapp-php
     env_file:
       - docker.env
       - docker.env.local
@@ -24,10 +24,10 @@ services:
 
   nginx:
     image: nginx:1.29-alpine
-    container_name: skeleton-nginx
+    container_name: skeleton-webapp-nginx
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.skeleton-nginx.rule=Host(`skeleton.localhost`)"
+      - "traefik.http.routers.skeleton-nginx.rule=Host(`skeleton-webapp.localhost`)"
       - "traefik.http.routers.skeleton-nginx.entryPoints=web,websecure"
       - "traefik.http.routers.skeleton-nginx.tls=true"
     volumes:
@@ -41,8 +41,8 @@ services:
         condition: service_healthy
 
   postgres:
-    image: postgres:17
-    container_name: skeleton-postgres
+    image: postgres:18
+    container_name: skeleton-webapp-postgres
     environment:
       POSTGRES_DB: skeleton
       POSTGRES_PASSWORD: skeleton-password
@@ -50,7 +50,7 @@ services:
     ports:
       - "54322:5432" #use by macOS user to connect directly to the database
     volumes:
-      - postgres:/var/lib/postgresql/data:rw
+      - postgres:/var/lib/postgresql/18/docker:rw
     healthcheck:
       test: [ "CMD", "pg_isready", "-d", "skeleton", "-U", "skeleton" ]
       timeout: 5s
@@ -59,7 +59,7 @@ services:
 
   mailpit:
     image: axllent/mailpit
-    container_name: skeleton-mailpit
+    container_name: skeleton-webapp-mailpit
     ports:
       - "1025"
       - "8025"
@@ -69,7 +69,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.services.skeleton-maildev.loadbalancer.server.port=8025"
-      - "traefik.http.routers.skeleton-maildev.rule=Host(`skeleton-mail.localhost`)"
+      - "traefik.http.routers.skeleton-maildev.rule=Host(`skeleton-webapp-mail.localhost`)"
       - "traefik.http.routers.skeleton-maildev.entryPoints=web,websecure"
       - "traefik.http.routers.skeleton-maildev.tls=true"
     networks:
