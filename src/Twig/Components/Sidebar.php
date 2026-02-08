@@ -51,6 +51,30 @@ class Sidebar
                     ],
                 ],
             ],
+            [
+                "name" => "Security",
+                "isTitle" => false,
+                "url" => null,
+                'pictureType' => self::PICTURE_TYPE_ICON,
+                "icon" => "person-badge-fill",
+                "subMenu" => [
+                    [
+                        "name" => "Login",
+                        "url" => "security_login",
+                        "subMenu" => []
+                    ],
+                    [
+                        "name" => "Register",
+                        "url" => "security_register",
+                        "subMenu" => []
+                    ],
+                    [
+                        "name" => "Forgot Password",
+                        "url" => "security_forgot_password",
+                        "subMenu" => []
+                    ],
+                ],
+            ],
         ];
     }
 }
