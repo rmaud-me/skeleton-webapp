@@ -1,4 +1,4 @@
-{% extends 'layouts/base.html.twig' %}
+{% extends 'layouts/root.html.twig' %}
 
 {% block body %}
     <div id="app">
@@ -10,6 +10,7 @@
                 <a href="#" class="burger-btn d-block d-xl-none">
                     <i class="bi bi-justify fs-3"></i>
                 </a>
+                {% include "layouts/_partials/_vertical-nav.html.twig" %}
             </header>
             <div id="main-content">
                 {% block content %}
