@@ -1,0 +1,16 @@
+<div {{ attributes }} class="flex flex-wrap items-center justify-between border-t border-white/10 px-1 py-3 sm:px-6">
+    {% set paginationStatsIdAttribute = 'pagination-stats' %}
+    {% if id is defined %}
+        {% set paginationStatsIdAttribute = 'pagination-stats-' ~ id %}
+    {% endif %}
+
+    <div id="{{ paginationStatsIdAttribute }}" class="text-sm text-gray-600 dark:text-gray-400">
+        {{ 'components.pagination.showing_result'|trans({'%currentPageMinElement%': this.getFirstItem(), '%currentPageMaxElement%': this.getLastItem, '%totalItems%': this.totalItems})|raw }}
+    </div>
+
+    {% if this.isLivePagination %}
+        {{ knp_pagination_render(pagination, 'bundles/KnpPaginator/livePagination.html.twig') }}
+    {% else %}
+        {{ knp_pagination_render(pagination, 'bundles/KnpPaginator/pagination.html.twig') }}
+    {% endif %}
+</div>

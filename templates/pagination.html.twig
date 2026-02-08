@@ -8,9 +8,6 @@
         <section class="section">
             <div class="card">
                 <div class="card-body">
-                    <div class="count">
-                        Item count {{ pagination.getTotalItemCount }}
-                    </div>
                     <div class="table-responsive">
                         <table class="table mb-0 table-lg">
                             <tr>
@@ -32,9 +29,7 @@
                         </table>
                     </div>
                     {# display navigation #}
-                    <div class="navigation mt-4">
-                        {{ knp_pagination_render(pagination) }}
-                    </div>
+                    <twig:Pagination pagination="{{ pagination }}"/>
                 </div>
             </div>
 

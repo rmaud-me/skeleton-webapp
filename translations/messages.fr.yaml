@@ -1,0 +1,3 @@
+components:
+    pagination:
+        showing_result: 'Affiche <span class="font-medium">%currentPageMinElement%</span> à <span class="font-medium">%currentPageMaxElement%</span> des <span class="font-medium">%totalItems%</span> résultats'

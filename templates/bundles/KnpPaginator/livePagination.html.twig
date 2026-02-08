@@ -1,0 +1,77 @@
+{% if pageCount > 1 %}
+    <nav class="navigation mt-4">
+        <ul class="pagination pagination-primary justify-content-center">
+            <li class="page-item previous {% if previous is not defined %}disabled{% endif %}">
+                {% if previous is not defined %}
+                    <button
+                        type="button"
+                        data-action="live#action"
+                        data-live-action-param="changePage"
+                        data-live-page-param="{{ previous }}"
+                        class="page-link"
+                        href="#"
+                    >
+                        <span aria-hidden="true"><i class="bi bi-chevron-left"></i></span>
+                    </button>
+                {% else %}
+                    <button
+                        type="button"
+                        data-action="live#action"
+                        data-live-action-param="changePage"
+                        data-live-page-param="{{ previous }}"
+                        class="page-link"
+                        href="{{ path(route, query|merge({(pageParameterName): previous})) }}"
+                    >
+                        <span aria-hidden="true"><i class="bi bi-chevron-left"></i></span>
+                    </button>
+                {% endif %}
+            </li>
+
+            {% for page in pagesInRange %}
+                {% if page != current %}
+                    <li class="page-item page">
+                        <button
+                            type="button"
+                            data-action="live#action"
+                            data-live-action-param="changePage"
+                            data-live-page-param="{{ page }}"
+                            class="page-link" href="{{ path(route, query|merge({(pageParameterName): page})) }}"
+                        >
+                            {{ page }}
+                        </button>
+                    </li>
+                {% else %}
+                    <li class="page-item active current">
+                        <span class="page-link" href="#">{{ page }}</span>
+                    </li>
+                {% endif %}
+            {% endfor %}
+
+            <li class="page-item next {% if next is not defined %}disabled{% endif %}">
+                {% if next is not defined %}
+                    <button
+                        type="button"
+                        data-action="live#action"
+                        data-live-action-param="changePage"
+                        data-live-page-param="{{ next }}"
+                        class="page-link"
+                        href="#"
+                    >
+                        <span aria-hidden="true"><i class="bi bi-chevron-right"></i></span>
+                    </button>
+                {% else %}
+                    <button
+                        type="button"
+                        data-action="live#action"
+                        data-live-action-param="changePage"
+                        data-live-page-param="{{ next }}"
+                        class="page-link"
+                        href="{{ path(route, query|merge({(pageParameterName): next})) }}"
+                    >
+                        <span aria-hidden="true"><i class="bi bi-chevron-right"></i></span>
+                    </button>
+                {% endif %}
+            </li>
+        </ul>
+    </nav>
+{% endif %}
