@@ -30,24 +30,6 @@ class DefaultController extends AbstractController
         return $this->render('submenu2.html.twig');
     }
 
-    #[Route('/login', name: 'auth_login')]
-    public function login(): Response
-    {
-        return $this->render('auth/login.html.twig');
-    }
-
-    #[Route('/register', name: 'auth_register')]
-    public function register(): Response
-    {
-        return $this->render('auth/register.html.twig');
-    }
-
-    #[Route('/forgot-password', name: 'auth_forgot_password')]
-    public function forgotPassword(): Response
-    {
-        return $this->render('auth/forgot-password.html.twig');
-    }
-
     #[Route('/chartjs', name: 'app_chartjs')]
     public function chartjs(ChartBuilderInterface $chartBuilder): Response
     {
