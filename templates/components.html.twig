@@ -1,0 +1,88 @@
+{% extends 'layouts/main.html.twig' %}
+
+{% block title %}Twig Component List{% endblock %}
+
+{% block content %}
+    <h1>Standalone component</h1>
+    <hr>
+    <div>
+        {# Heading components #}
+        <h2>Heading components</h2>
+        <hr>
+        <div class="d-flex flex-column">
+            <h1>H1 Title</h1>
+            <h2>H2 Title</h2>
+            <h3>H3 Title</h3>
+            <h4>H4 Title</h4>
+        </div>
+        <hr>
+        {# Button components #}
+        {#        <div class="mx-3 mb-4"> #}
+        {#            <h3>Button components</h3> #}
+        {#            <twig:thot:Button size="xl">XL Button</twig:thot:Button> #}
+        {#            <twig:thot:Button size="lg">LG Button</twig:thot:Button> #}
+        {#            <twig:thot:Button size="md">MD Button</twig:thot:Button> #}
+        {#            <twig:thot:Button size="sm">SM Button</twig:thot:Button> #}
+        {#            <twig:thot:Button size="xs">XS Button</twig:thot:Button> #}
+        {#            <br><br> #}
+        {#            <twig:thot:Button>Default button</twig:thot:Button> #}
+        {#            <twig:thot:Button color="red">Red button</twig:thot:Button> #}
+        {#            <twig:thot:Button color="green">Green button</twig:thot:Button> #}
+        {#        </div> #}
+        {# Alink as button components #}
+        {#        <div class="mx-3 mb-4"> #}
+        {#            <twig:thot:Hr> #}
+        {#                <h3>Alink as button components</h3> #}
+        {#            </twig:thot:Hr> #}
+        {#            <twig:thot:ALink size="xl">XL Button</twig:thot:ALink> #}
+        {#            <twig:thot:ALink size="lg">LG Button</twig:thot:ALink> #}
+        {#            <twig:thot:ALink size="md">MD Button</twig:thot:ALink> #}
+        {#            <twig:thot:ALink size="sm">SM Button</twig:thot:ALink> #}
+        {#            <twig:thot:ALink size="xs">XS Button</twig:thot:ALink> #}
+        {#            <br><br><br> #}
+        {#            <twig:thot:ALink>Default button</twig:thot:ALink> #}
+        {#            <twig:thot:ALink color="red">Red button</twig:thot:ALink> #}
+        {#            <twig:thot:ALink color="green">Green button</twig:thot:ALink> #}
+        {#        </div> #}
+        {# Alert/Flash components #}
+        {#        <div class="sm:basis-1/4 mx-3 mb-4"> #}
+        {#            <twig:thot:Hr> #}
+        {#                <h3>Flash message components</h3> #}
+        {#            </twig:thot:Hr> #}
+        {#            <twig:thot:alert:Alert type="info">Info flash message</twig:thot:alert:Alert> #}
+        {#            <twig:thot:alert:Alert type="success">Success flash message</twig:thot:alert:Alert> #}
+        {#            <twig:thot:alert:Alert type="warning">Warning flash message</twig:thot:alert:Alert> #}
+        {#            <twig:thot:alert:Alert type="error">Success flash message</twig:thot:alert:Alert> #}
+        {#        </div> #}
+        {# Modal components #}
+        {#        <div class="mx-3 mb-4"> #}
+        {#            <twig:thot:Hr> #}
+        {#                <h3>Modal components</h3> #}
+        {#            </twig:thot:Hr> #}
+        {#            <twig:thot:Modal buttonActionName="Custom header/content" class="mx-auto mb-2"> #}
+        {#                {% block modalHeader %} #}
+        {#                    <p class="dark:text-white text-gray-800">Add header</p> #}
+        {#                {% endblock %} #}
+        {#                {% block content %} #}
+        {#                    <p class="dark:text-white text-gray-800">Content</p> #}
+        {#                {% endblock %} #}
+        {#            </twig:thot:Modal> #}
+        {#            <twig:thot:Modal buttonActionName="Custom content/footer" class="mx-auto"> #}
+        {#                {% block content %} #}
+        {#                    <p class="dark:text-white text-gray-800">Add header</p> #}
+        {#                {% endblock %} #}
+        {#                {% block modalFooter %} #}
+        {#                    <p class="dark:text-white text-gray-800">Footer</p> #}
+        {#                {% endblock %} #}
+        {#            </twig:thot:Modal> #}
+        {#        </div> #}
+    </div>
+    <h1>Form component</h1>
+    <div>
+        {{ form_start(form) }}
+        {{ form_row(form.datepicker, {attr: {'data-controller': 'datepicker'}}) }}
+        {{ form_row(form.datetimepicker, {attr: {'data-controller': 'datepicker', 'data-enable-time': 'true'}}) }}
+        {{ form_row(form.timepicker, {attr: {'data-controller': 'datepicker', 'data-enable-time-picker-only': 'true', 'data-enable-time': 'true'}}) }}
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

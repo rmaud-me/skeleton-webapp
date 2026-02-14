@@ -1,0 +1,156 @@
+{% use 'form_div_layout.html.twig' %}
+
+{# Input #}
+{%- block form_widget_simple -%}
+    {%- set attr = attr|merge({class: 'form-control'}) -%}
+    {{- parent() -}}
+{%- endblock form_widget_simple -%}
+
+{%- block form_label -%}
+    {%- set default_class = 'form-label' -%}
+    {%- set css_class = default_class ~ (label_attr.class|default('')) -%}
+    {%- set label_attr = label_attr|merge({class: css_class}) -%}
+    {{- parent() -}}
+{%- endblock form_label -%}
+
+{# Textarea #}
+{%- block textarea_widget -%}
+    {%- set textarea_default_class = 'form-control' -%}
+    {%- set css_class = textarea_default_class ~ (attr.class|default('')) -%}
+    {%- set attr = attr|merge({class: css_class}) -%}
+    {{ parent() }}
+{%- endblock textarea_widget -%}
+
+{# Radio/Checkbox #}
+{%- block choice_widget_expanded -%}
+    {# Checkbox #}
+    {% if multiple and expanded %}
+        <div class="form-check" {{ block('widget_container_attributes') }}>
+            {%- for child in form %}
+                <div class="checkbox">
+                    {{- form_widget(child, { attr: {'class': 'form-check-input'}}) -}}
+                    {{- form_label(child, null, {translation_domain: choice_translation_domain, label_attr: {for: child.vars.id, class: 'form-check-label'}}) -}}
+                </div>
+            {% endfor -%}
+        </div>
+    {% endif %}
+
+    {# Radio #}
+    {% if not multiple and expanded %}
+        {%- for child in form %}
+            <div class="form-check" {{ block('widget_container_attributes') }}>
+                {{- form_widget(child, { attr: {'class': 'form-check-input'}}) -}}
+                {{- form_label(child, null, {translation_domain: choice_translation_domain, label_attr: {for: child.vars.id, class: 'form-check-label'}}) -}}
+            </div>
+        {% endfor -%}
+    {% endif %}
+{%- endblock choice_widget_expanded -%}
+
+{# Dropdown #}
+{% block choice_widget_collapsed -%}
+    {#    #}{# if uses_autocomplete is true, mean tom-select will be used by the form #}
+    {#    {% if form.vars.uses_autocomplete is same as(false) %} #}
+    {#        {%- set default_class = 'block w-full p-2.5 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' -%} #}
+    {#        {%- set css_class = [default_class, (attr.class|default(default_class))]|join(' ') -%} #}
+    {#        {%- set attr = attr|merge({class: css_class}) -%} #}
+    {#    {% endif %} #}
+
+    {%- set attr = attr|merge({class: 'form-select'}) -%}
+
+    {%- if required and placeholder is none and not placeholder_in_choices and not multiple and (attr.size is not defined or attr.size <= 1) -%}
+        {% set required = false %}
+    {%- endif -%}
+
+    {% if multiple and attr.size is not defined %}
+        {% set attr = attr|merge({size: 3}) %}
+    {% endif %}
+
+    <fieldset class="form-group">
+        <select {{ block('widget_attributes') }}{% if multiple %} multiple="multiple"{% endif %}>
+            {%- if placeholder is not none -%}
+                <option
+                    value=""{% if placeholder_attr|default({}) %}{% with {attr: placeholder_attr} %}{{ block('attributes') }}{% endwith %}{% endif %}{% if required and value is empty %} selected="selected"{% endif %}>{{ placeholder != '' ? (translation_domain is same as(false) ? placeholder : placeholder|trans({}, translation_domain)) }}</option>
+            {%- endif -%}
+            {%- if preferred_choices|length > 0 -%}
+                {% set options = preferred_choices %}
+                {% set render_preferred_choices = true %}
+                {{- block('choice_widget_options') -}}
+                {%- if choices|length > 0 and separator is not none -%}
+                    {%- if separator_html is not defined or separator_html is same as(false) -%}
+                        <option disabled="disabled">{{ separator }}</option>
+                    {% else %}
+                        {{ separator|raw }}
+                    {% endif %}
+                {%- endif -%}
+            {%- endif -%}
+            {%- set options = choices -%}
+            {%- set render_preferred_choices = false -%}
+            {{- block('choice_widget_options') -}}
+        </select>
+    </fieldset>
+{%- endblock choice_widget_collapsed %}
+
+{# Unique checkbox - Row #}
+{%- block checkbox_row -%}
+    {%- set default_class = 'form-check form-switch' -%}
+    {%- set css_class = default_class ~ (row_attr.class|default('')) -%}
+    {%- set row_attr = row_attr|merge({class: css_class}) -%}
+
+    {%- set widget_attr = {attr: {class: 'form-check-input'}} -%}
+    {%- if help is not empty -%}
+        {%- set widget_attr = {attr: {'aria-describedby': id ~ '_help'}}|merge(widget_attr) -%}
+    {%- endif -%}
+
+    {%- set label_attr = {attr: {class: 'form-check-label'}} -%}
+
+    {{- form_help(form) -}}
+    {{- form_errors(form) -}}
+    <div{% with {attr: row_attr} %}{{ block('attributes') }}{% endwith %}>
+        {{- form_widget(form, widget_attr) -}}
+        {{- form_label(form) -}}
+    </div>
+{%- endblock checkbox_row -%}
+
+{# Row #}
+{%- block form_row -%}
+    {%- set default_row_class = 'form-group' -%}
+    {%- set required_class = 'mandatory' -%}
+    {% if required %}
+        {% set default_row_class = default_row_class ~ ' ' ~ required_class %}
+    {% endif %}
+    {%- set row_attr = row_attr|merge({class: default_row_class}) -%}
+
+    {%- set widget_attr = {} -%}
+    {%- if help is not empty -%}
+        {%- set widget_attr = {attr: {'aria-describedby': id ~ '_help'}} -%}
+    {%- endif -%}
+
+    <div{% with {attr: row_attr} %}{{ block('attributes') }}{% endwith %}>
+        {{- form_label(form) -}}
+        {{- form_help(form) -}}
+        {{- form_errors(form) -}}
+        {{- form_widget(form, widget_attr) -}}
+    </div>
+{%- endblock form_row -%}
+
+{# Misc #}
+{%- block form_errors -%}
+    {%- if errors|length > 0 -%}
+        <ul>
+            {%- for error in errors -%}
+                <li class="invalid-feedback">{{ error.message }}</li>
+            {%- endfor -%}
+        </ul>
+    {%- endif -%}
+{%- endblock form_errors -%}
+
+{% block form_help -%}
+    {%- set default_help_class = 'text-muted' ~ (help_attr.class|default('')) -%}
+    {%- if help is not empty -%}
+        {%- set help_attr = help_attr|merge({class: default_help_class}) -%}
+        <{{ element|default('small') }} id="{{ id }}_help"{% with {attr: help_attr} %}{{ block('attributes') }}{% endwith %}>
+            {{ ux_icon('material-symbols:info-rounded', {class: 'd-inline-block ms-2 me-1 mb-1'}) }}
+            {{- block('form_help_content') -}}
+        </{{ element|default('small') }}>
+    {%- endif -%}
+{%- endblock form_help %}

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Form\FormThemePresentType;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -95,5 +96,15 @@ class DefaultController extends AbstractController
         );
 
         return $this->render('pagination.html.twig', ['pagination' => $pagination]);
+    }
+
+    #[Route('/components', name: 'components', methods: ['GET'])]
+    public function components(): Response
+    {
+        $form = $this->createForm(FormThemePresentType::class);
+
+        return $this->render('components.html.twig', [
+            'form'             => $form,
+        ]);
     }
 }

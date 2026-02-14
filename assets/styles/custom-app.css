@@ -1,0 +1,7 @@
+html[data-bs-theme=dark] .form-label {
+    margin-bottom: 4px;
+}
+
+.form-label {
+    margin-bottom: 4px;
+}
