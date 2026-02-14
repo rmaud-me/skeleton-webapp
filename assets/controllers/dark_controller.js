@@ -3,9 +3,9 @@ import { setTheme, initTheme } from "../mazer/js/components/dark.js";
 
 export default class extends Controller {
     connect() {
-        const THEME_KEY = "theme"
+        const themeKey = "theme"
         const toggler = document.getElementById("toggle-dark")
-        const theme = localStorage.getItem(THEME_KEY)
+        const theme = localStorage.getItem(themeKey)
 
         if(toggler) {
             toggler.checked = theme === "dark"
