@@ -80,12 +80,9 @@ RUN set -eux; \
 	composer run-script --no-dev post-install-cmd; \
 	chmod +x bin/console; sync;
 
-
-###> Build assets ###
-#RUN set -eux; \
-#    bin/console importmap:install; \
-#    bin/console asset-map:compile;
-###< Build assets ###
+RUN set -eux; \
+    bin/console importmap:install; \
+    bin/console asset-map:compile;
 
 # Comment if you do not want rootless container
 USER appuser
