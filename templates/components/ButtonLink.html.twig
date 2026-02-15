@@ -1,0 +1,25 @@
+{% props size = 'md', color = 'blue', href = '#' %}
+
+{% set buttonLink = html_cva(
+    base: 'btn',
+    variants: {
+        size: {
+            small: 'btn-sm',
+            normal: '',
+            large: 'btn-lg',
+        },
+        color: {
+            blue: 'btn-outline-primary',
+            red: 'btn-outline-danger',
+            green: 'btn-outline-success',
+        },
+    },
+    defaultVariant: {
+        size: 'md',
+        color: 'blue',
+    },
+) %}
+
+<a href="{{ href }}" class="{{ buttonLink.apply({color: color, size: size}, attributes.render('class')) }}" {{ attributes }}>
+    {% block content %}{% endblock %}
+</a>
