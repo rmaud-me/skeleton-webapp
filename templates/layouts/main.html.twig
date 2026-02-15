@@ -7,7 +7,7 @@
         </div>
         <div id="main" class="layout-navbar navbar-fixed">
             <header class="mb-3">
-                {% include "layouts/_partials/_vertical-nav.html.twig" %}
+                {% include "layouts/_partials/vertical-nav.html.twig" %}
             </header>
             <div id="main-content">
                 <div id="flash-messages">
@@ -25,11 +25,13 @@
             <footer>
                 <div class="footer clearfix mb-0 text-muted">
                     <div class="float-start">
-                        <p>{{ "now"|date("Y") }} <a href="https://github.com/zuramai/mazer">&copy; Mazer</a></p>
+                        <p>{{ 'now'|date('Y') }} <a href="https://github.com/zuramai/mazer">&copy; Mazer</a></p>
                     </div>
                     <div class="float-end">
-                        <p>
-                            Crafted with <span class="text-danger"><twig:ux:icon name="tabler:heart" height="20px" width="20px" /></span> by <a href="https://zuramai.github.io/mazer/demo/index.html">Zuramai</a>
+                        <p>Crafted with
+                            <span class="text-danger">
+                                <twig:ux:icon height="1rem" width="1rem" name="bi:heart"/>
+                            </span> by <a href="https://zuramai.github.io/mazer/demo/index.html">Zuramai</a>
                         </p>
                     </div>
                 </div>

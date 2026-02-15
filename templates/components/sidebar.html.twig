@@ -13,7 +13,9 @@
                 <twig:ux:icon height="20px" width="20px" name="line-md:sunny-outline-to-moon-loop-transition" />
             </div>
             <div class="sidebar-toggler  x">
-                <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
+                <a href="#" class="sidebar-hide d-xl-none d-block">
+                    <twig:ux:icon height="2rem" width="2rem" name="bi:x"/>
+                </a>
             </div>
         </div>
     </div>
@@ -44,14 +46,15 @@
                             {% if sidebarItem.pictureType == constant('PICTURE_TYPE_EMOJI', this) %}
                                 <div class="fs-6">{{ sidebarItem.emoji }}</div>
                             {% else %}
-                                <twig:ux:icon height="20px" width="20px" name="{{ sidebarItem.icon }}" />
+                                <twig:ux:icon width="1.5rem" height="1.5rem" name="{{ sidebarItem.icon }}"/>
                             {% endif %}
                             <span>{{ sidebarItem.name }}</span>
                         </a>
                         {% if sidebarItem.subMenu is defined and sidebarItem.subMenu|length > 0 %}
                             <ul class="submenu {% if hasSubMenuActive == true %}active{% endif %}">
                                 {% for sub in sidebarItem.subMenu %}
-                                    <li class="submenu-item {% if sub.url == app.current_route %}active{% endif %} {% if sub.subMenu|length > 0 %}has-sub{% endif %}">
+                                    {% set isSubActive = sub.url == app.current_route or app.current_route in sub.activeByHiddenChildren|default({}) %}
+                                    <li class="submenu-item {% if isSubActive %}active{% endif %} {% if sub.subMenu|length > 0 %}has-sub{% endif %}">
                                         <a href="{{ path(sub.url) }}" class="submenu-link">{{ sub.name }}</a>
                                         {% if sub.subMenu|length > 0 %}
                                             <ul class="submenu submenu-level-2 ">
