@@ -1,0 +1,20 @@
+{% props type = 'info' %}
+
+{% set alert = html_cva(
+    base: 'alert',
+    variants: {
+        type: {
+            success: 'alert-success',
+            error: 'alert-danger',
+            warning: 'alert-warning',
+            info: 'alert-info',
+        },
+    },
+    defaultVariant: {
+        type: 'info',
+    },
+) %}
+
+<div class="{{ alert.apply({type: type}, attributes.render('class')) }}" role="alert">
+    <span class="font-medium">{{ type|capitalize }} :</span> {% block content %}{% endblock %}
+</div>
