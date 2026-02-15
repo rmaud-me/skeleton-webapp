@@ -33,7 +33,7 @@ class Sidebar
             "isTitle" => false,
             "url" => 'components',
             'pictureType' => self::PICTURE_TYPE_ICON,
-            "icon" => "collection-fill",
+            "icon" => "bi:collection-fill",
             "subMenu" => [],
         ];
     }
@@ -45,7 +45,7 @@ class Sidebar
             "isTitle" => false,
             "url" => "app_chartjs",
             'pictureType' => self::PICTURE_TYPE_ICON,
-            "icon" => "file-earmark-spreadsheet-fill"
+            "icon" => "uil:chart-line"
         ];
     }
 
@@ -56,7 +56,7 @@ class Sidebar
             "isTitle" => false,
             "url" => null,
             'pictureType' => self::PICTURE_TYPE_ICON,
-            "icon" => "stack",
+            "icon" => "ri:stack-fill",
             "subMenu" => [
                 [
                     "name" => "Sub Menu 1",
@@ -79,7 +79,7 @@ class Sidebar
             "isTitle" => false,
             "url" => "app_paginator",
             'pictureType' => self::PICTURE_TYPE_ICON,
-            "icon" => "file-earmark-spreadsheet-fill"
+            "icon" => "stash:pagination-duotone"
         ];
     }
 
@@ -90,7 +90,7 @@ class Sidebar
             "isTitle" => false,
             "url" => null,
             'pictureType' => self::PICTURE_TYPE_ICON,
-            "icon" => "person-badge-fill",
+            "icon" => "mdi:security-lock-outline",
             "subMenu" => [
                 [
                     "name" => "Login",

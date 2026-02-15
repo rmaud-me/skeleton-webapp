@@ -7,9 +7,6 @@
         </div>
         <div id="main" class="layout-navbar navbar-fixed">
             <header class="mb-3">
-                <a href="#" class="burger-btn d-block d-xl-none">
-                    <i class="bi bi-justify fs-3"></i>
-                </a>
                 {% include "layouts/_partials/_vertical-nav.html.twig" %}
             </header>
             <div id="main-content">
@@ -31,8 +28,9 @@
                         <p>{{ "now"|date("Y") }} <a href="https://github.com/zuramai/mazer">&copy; Mazer</a></p>
                     </div>
                     <div class="float-end">
-                        <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
-                                href="https://zuramai.github.io/mazer/demo/index.html">Zuramai</a></p>
+                        <p>
+                            Crafted with <span class="text-danger"><twig:ux:icon name="tabler:heart" height="20px" width="20px" /></span> by <a href="https://zuramai.github.io/mazer/demo/index.html">Zuramai</a>
+                        </p>
                     </div>
                 </div>
             </footer>

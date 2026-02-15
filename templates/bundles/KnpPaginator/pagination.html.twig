@@ -4,11 +4,15 @@
             <li class="page-item previous {% if previous is not defined %}disabled{% endif %}">
                 {% if previous is not defined %}
                     <a class="page-link" href="#">
-                        <span aria-hidden="true"><i class="bi bi-chevron-left"></i></span>
+                        <span aria-hidden="true">
+                            <twig:ux:icon name="bi:chevron-left" />
+                        </span>
                     </a>
                 {% else %}
                     <a class="page-link" href="{{ path(route, query|merge({(pageParameterName): previous})) }}">
-                        <span aria-hidden="true"><i class="bi bi-chevron-left"></i></span>
+                        <span aria-hidden="true">
+                            <twig:ux:icon name="bi:chevron-left" />
+                        </span>
                     </a>
                 {% endif %}
             </li>
@@ -28,11 +32,15 @@
             <li class="page-item next {% if next is not defined %}disabled{% endif %}">
                 {% if next is not defined %}
                     <a class="page-link" href="#">
-                        <span aria-hidden="true"><i class="bi bi-chevron-right"></i></span>
+                        <span aria-hidden="true">
+                            <twig:ux:icon name="bi:chevron-right" />
+                        </span>
                     </a>
                 {% else %}
                     <a class="page-link" href="{{ path(route, query|merge({(pageParameterName): next})) }}">
-                        <span aria-hidden="true"><i class="bi bi-chevron-right"></i></span>
+                        <span aria-hidden="true">
+                            <twig:ux:icon name="bi:chevron-right" />
+                        </span>
                     </a>
                 {% endif %}
             </li>
