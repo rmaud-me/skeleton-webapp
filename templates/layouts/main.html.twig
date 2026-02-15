@@ -10,6 +10,10 @@
                 {% include "layouts/_partials/vertical-nav.html.twig" %}
             </header>
             <div id="main-content">
+                <div class="page-heading">
+                    {% block heading %}
+                    {% endblock %}
+                </div>
                 <div id="flash-messages">
                     {% for type, messages in app.flashes %}
                         {% for message in messages %}
