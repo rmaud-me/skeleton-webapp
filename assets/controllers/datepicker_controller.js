@@ -6,8 +6,7 @@
  */
 import {Controller} from '@hotwired/stimulus';
 import flatpickr from "flatpickr";
-import "flatpickr/dist/flatpickr.min.css";
-import "flatpickr/dist/themes/dark.css"
+import "../styles/datapicker.css";
 
 export default class extends Controller {
     initialize() {

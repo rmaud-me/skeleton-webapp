@@ -18,9 +18,9 @@ services:
     volumes:
       - ./:/srv:rw,cached
 
-      - ./.docker/config/bashrc:/root/.bashrc
-      - ./.docker/config/bash_aliases:/root/.bash_aliases
-      - ./.docker/data/history:/root/.bash_history
+      - ./.docker/config/bashrc:/home/appuser/.bashrc
+      - ./.docker/config/bash_aliases:/home/appuser/.bash_aliases
+      - ./.docker/data/history:/home/appuser/.bash_history
 
   nginx:
     image: nginx:1.29-alpine

@@ -65,12 +65,4 @@ return [
     'flatpickr' => [
         'version' => '4.6.13',
     ],
-    'flatpickr/dist/flatpickr.min.css' => [
-        'version' => '4.6.13',
-        'type' => 'css',
-    ],
-    'flatpickr/dist/themes/dark.css' => [
-        'version' => '4.6.13',
-        'type' => 'css',
-    ],
 ];
